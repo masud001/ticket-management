@@ -79,16 +79,17 @@ const RengerDashboard = () => {
         <Accordion>
           <Accordion.Item eventKey="0">
             <Accordion.Header>
-              <b>All Visitors List</b>
+              <b>All Registered Visitors</b>
             </Accordion.Header>
             <Accordion.Body>
               <Table striped bordered hover>
                 <thead>
                   <tr>
-                    <th>#</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
+                    <th style={{ width: "5%" }}>#</th>
+                    <th style={{ width: "25%" }}>Full Name</th>
+                    <th style={{ width: "30%" }}>Email</th>
+                    <th style={{ width: "20%" }}>Role</th>
+                    <th style={{ width: "20%" }}>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -98,6 +99,17 @@ const RengerDashboard = () => {
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>{user.role}</td>
+                      <td className="d-flex gap-2 justify-content-center">
+                        <button className="btn btn-sm btn-primary me-2">
+                          View
+                        </button>
+                        <button className="btn btn-sm btn-warning me-2">
+                          Edit
+                        </button>
+                        <button className="btn btn-sm btn-danger">
+                          Delete
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
