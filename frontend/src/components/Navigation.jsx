@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+
 const Navigation = () => {
   const [user, setUser] = useState(null);
 
@@ -32,6 +33,7 @@ const Navigation = () => {
                 <Nav.Link href="/admin">Admin Dashboard</Nav.Link>
               )}
               <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+              <Nav.Link href="/">{user.user.name}</Nav.Link>
             </>
           ) : (
             <>

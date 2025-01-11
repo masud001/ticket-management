@@ -58,16 +58,46 @@ const Home = () => {
     setCustomModalShow(true);
   };
 
-  const handleCustomSubmitone = () => {
+  const handleCustomSubmition = () => {
     const ticketInfo = {
       totalVisitors,
       selectedRides,
       totalPrice: calculateTotalPrice(),
     };
     localStorage.setItem("ticketInfo", JSON.stringify(ticketInfo));
-    // const storedTicketInfo = JSON.parse(localStorage.getItem("ticketInfo"));
-    // console.log("Stored Ticket Info: ", storedTicketInfo);
     handleModalClose();
+    window.location.href = "/ticket-purchase";
+  };
+
+  const handleStaticTicket = (count) => {
+    let ticketInfo;
+    if (count === 1) {
+      ticketInfo = {
+        totalVisitors: count,
+        selectedRides: [{ name: "Roller Coaster", price: 50 }],
+        totalPrice: 50,
+      };
+    } else if (count === 2) {
+      ticketInfo = {
+        totalVisitors: count,
+        selectedRides: [
+          { name: "Roller Coaster", price: 50 },
+          { name: "Ferris Wheel", price: 30 },
+        ],
+        totalPrice: 160,
+      };
+    } else if (count === 3) {
+      ticketInfo = {
+        totalVisitors: count,
+        selectedRides: [
+          { name: "Roller Coaster", price: 50 },
+          { name: "Ferris Wheel", price: 30 },
+          { name: "Carousel", price: 20 },
+        ],
+        totalPrice: 300,
+      };
+    }
+    localStorage.setItem("ticketInfo", JSON.stringify(ticketInfo));
     window.location.href = "/ticket-purchase";
   };
 
@@ -76,7 +106,7 @@ const Home = () => {
       <Navigation />
       <div className="py-5">
         <div className="text-start d-flex justify-content-start gap-4">
-          <Link to="/ticket/200">
+          <Link onClick={handleStaticTicket.bind(this, 1)}>
             <Card>
               <Card.Img variant="top" src="https://placehold.co/600x400" />
               <Card.Body>
@@ -95,7 +125,7 @@ const Home = () => {
             </Card>
           </Link>
 
-          <Link to="/ticket/300">
+          <Link onClick={handleStaticTicket.bind(this, 2)}>
             <Card>
               <Card.Img variant="top" src="https://placehold.co/600x400" />
               <Card.Body>
@@ -114,7 +144,7 @@ const Home = () => {
             </Card>
           </Link>
 
-          <Link to="/ticket/400">
+          <Link onClick={handleStaticTicket.bind(this, 3)}>
             <Card>
               <Card.Img variant="top" src="https://placehold.co/600x400" />
               <Card.Body>
@@ -207,7 +237,7 @@ const Home = () => {
           </Button>
           <Button
             variant="primary"
-            onClick={handleCustomSubmitone}
+            onClick={handleCustomSubmition}
             disabled={selectedRides.length === 0}
           >
             Done
