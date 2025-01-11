@@ -34,16 +34,14 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) return res.status(400).send('User not found');
-
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).send('Invalid credentials');
     // Log the secret for debugging
-    console.log('JWT_SECRET:', process.env.JWT_SECRET);
+    // console.log('JWT_SECRET:', process.env.JWT_SECRET);
     const token = jwt.sign({ 
         id: user._id, 
         role: user.role }, 
         process.env.JWT_SECRET, { expiresIn: '1h' });
-    
     res.json({ 
         token, 
         user: { 

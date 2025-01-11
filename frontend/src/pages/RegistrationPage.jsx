@@ -20,6 +20,7 @@ const RegistrationPage = () => {
            
             setMessage('Registration Successful');
             setMessageType('success');
+            clearForm();
             setShow(true);
         } catch (error) {
             setMessage(error.response?.data || 'Registration Failed');
@@ -28,7 +29,12 @@ const RegistrationPage = () => {
         }
     };
     // clear form data after submit
-
+    const clearForm = () => {
+        setName('');
+        setEmail('');
+        setPassword('');
+        setRole('visitor');
+    };
     
 
     useEffect(() => {
@@ -59,19 +65,19 @@ const RegistrationPage = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">Full Name</label>
-              <input onChange={(e) => setName(e.target.value)} required type="text" placeholder='Enter your full name' className="form-control" id="name" aria-describedby="usernameHelp"/>
+              <input onChange={(e) => setName(e.target.value)} required value={name} type="text" placeholder='Enter your full name' className="form-control" id="name" aria-describedby="usernameHelp"/>
             </div>
             <div className="mb-3">
               <label htmlFor="userEmail" className="form-label">Email address</label>
-              <input type="email" placeholder='Enter your email' onChange={(e) => setEmail(e.target.value)} required className="form-control" id="userEmail" aria-describedby="emailHelp"/>
+              <input type="email" placeholder='Enter your email' onChange={(e) => setEmail(e.target.value)} required value={email} className="form-control" id="userEmail" aria-describedby="emailHelp"/>
             </div>
             <div className="mb-3">
               <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-              <input type="password" placeholder='Enter your password' onChange={(e) => setPassword(e.target.value)} required className="form-control" id="exampleInputPassword1"/>
+              <input type="password" placeholder='Enter your password' onChange={(e) => setPassword(e.target.value)} required value={password} className="form-control" id="exampleInputPassword1"/>
             </div>
             <div className="mb-3">
               <label htmlFor="role" className="form-label">Role</label>
-              <select onChange={(e) => setRole(e.target.value)} required className="form-select" id="role">
+              <select onChange={(e) => setRole(e.target.value)} value={role} required className="form-select" id="role">
                 <option value="visitor">Visitor</option>
                 <option value="ranger">Rengers</option>
                 <option value="admin">Admin</option>
