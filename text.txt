@@ -1,0 +1,4 @@
+user: madhnagar
+pass: 01Z7oFPQBtlDBAvj
+
+mongodb+srv://madhnagar:01Z7oFPQBtlDBAvj@gerden-ticket-managemen.uej8z.mongodb.net/
