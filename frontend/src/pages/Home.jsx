@@ -114,6 +114,17 @@ const Home = () => {
   return (
     <>
       <Navigation />
+
+      <CarouselComponent/>
+
+      <div className="container">
+        <div className="row">
+          <div className="col-12 text-center py-4">
+            <h1> Ticket Booking</h1>
+          </div>
+        </div>
+      </div>
+
       <div className="py-5">
         <div className="text-start d-flex justify-content-start gap-4">
           <Link onClick={handleStaticTicket.bind(this, 1)}>
