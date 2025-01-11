@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Navigation from "../components/Navigation";
 import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
+import CarouselComponent from "../components/CarouselComponent";
 
 const Home = () => {
   const [user, setUser] = useState(null);
@@ -115,7 +116,7 @@ const Home = () => {
     <>
       <Navigation />
 
-      <CarouselComponent/>
+      <CarouselComponent />
 
       <div className="container">
         <div className="row">
