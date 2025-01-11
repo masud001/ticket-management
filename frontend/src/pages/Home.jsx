@@ -4,6 +4,8 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router";
+import Footer from "../components/Footer";
+import CarouselComponent from "../components/CarouselComponent";
 const Home = () => {
   React.useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user"));
@@ -13,6 +15,17 @@ const Home = () => {
   return (
     <>
       <Navigation />
+
+      <CarouselComponent/>
+
+      <div className="container">
+        <div className="row">
+          <div className="col-12 text-center py-4">
+            <h1> Ticket Booking</h1>
+          </div>
+        </div>
+      </div>
+
       <div className="py-5">
         <div className="text-start d-flex justify-content-start gap-4">
           <Link to="/ticket/200">
@@ -89,6 +102,8 @@ const Home = () => {
           </Link>
         </div>
       </div>
+
+       <Footer/>
     </>
   );
 };
