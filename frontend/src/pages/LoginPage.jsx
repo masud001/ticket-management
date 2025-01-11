@@ -28,6 +28,8 @@ const LoginPage = () => {
 
       if (response.data.user.role === "admin") {
         window.location.href = "/admin";
+      } else if (response.data.user.role === "ranger") {
+        window.location.href = "/ranger";
       } else {
         window.location.href = "/";
       }

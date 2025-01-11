@@ -32,6 +32,9 @@ const Navigation = () => {
               {user.user.role === "admin" && (
                 <Nav.Link href="/admin">Admin Dashboard</Nav.Link>
               )}
+              {user.user.role === "ranger" && (
+                <Nav.Link href="/ranger">Ranger Dashboard</Nav.Link>
+              )}
               <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
               <Nav.Link href="/">{user.user.name}</Nav.Link>
             </>
