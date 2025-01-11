@@ -59,6 +59,11 @@ const Home = () => {
   };
 
   const handleCustomSubmition = () => {
+    if (!user) {
+      window.location.href = "/login";
+      return;
+    }
+
     const ticketInfo = {
       totalVisitors,
       selectedRides,
@@ -70,6 +75,11 @@ const Home = () => {
   };
 
   const handleStaticTicket = (count) => {
+    if (!user) {
+      window.location.href = "/login";
+      return;
+    }
+
     let ticketInfo;
     if (count === 1) {
       ticketInfo = {
