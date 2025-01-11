@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import Navigation from "../components/Navigation";
 import AdminChart from "../components/AdminChart";
 import axios from "axios";
+import Accordion from "react-bootstrap/Accordion";
+import Table from "react-bootstrap/Table";
 
 const RengerDashboard = () => {
   const [totalVisitors, setTotalVisitors] = useState();
-  // const [totalRengers, setTotalRengers] = useState();
   const [totalTicketSell, setTotalTicketSell] = useState();
   const [totalPrice, setTotalPrice] = useState();
+  const [allVisitors, setAllVisitors] = useState();
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user"));
@@ -15,7 +17,7 @@ const RengerDashboard = () => {
     if (userInfo?.user?.role !== "ranger") {
       window.location.href = "/";
     }
-
+    getUsers();
     getTickets();
   }, []);
 
@@ -41,6 +43,18 @@ const RengerDashboard = () => {
     }
   };
 
+  const getUsers = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5001/api/user/get-users"
+      );
+      const users = response.data;
+      setAllVisitors(users.filter((user) => user.role === "visitor"));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Navigation />
@@ -60,6 +74,37 @@ const RengerDashboard = () => {
       </div>
       <div className="w-100 d-flex justify-content-around py-5">
         <AdminChart />
+      </div>
+      <div className="w-100 ">
+        <Accordion>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>
+              <b>All Visitors List</b>
+            </Accordion.Header>
+            <Accordion.Body>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {allVisitors?.map((user, index) => (
+                    <tr key={user._id}>
+                      <td>{index + 1}</td>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.role}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
       </div>
     </>
   );

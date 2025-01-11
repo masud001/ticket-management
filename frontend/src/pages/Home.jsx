@@ -1,11 +1,11 @@
 import { Link } from "react-router";
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Navigation from "../components/Navigation";
 import ListGroup from "react-bootstrap/ListGroup";
-import Form from "react-bootstrap/Form";
 import CarouselComponent from "../components/CarouselComponent";
 
 const Home = () => {
@@ -54,6 +54,7 @@ const Home = () => {
     setTotalVisitors(1);
     setSelectedRides([]);
   };
+
   const handleModalShow = (e) => {
     e.preventDefault();
     setCustomModalShow(true);
@@ -64,7 +65,6 @@ const Home = () => {
       window.location.href = "/login";
       return;
     }
-
     const ticketInfo = {
       totalVisitors,
       selectedRides,
@@ -80,13 +80,12 @@ const Home = () => {
       window.location.href = "/login";
       return;
     }
-
     let ticketInfo;
     if (count === 1) {
       ticketInfo = {
         totalVisitors: count,
         selectedRides: [{ name: "Roller Coaster", price: 50 }],
-        totalPrice: 50,
+        totalPrice: 200,
       };
     } else if (count === 2) {
       ticketInfo = {
