@@ -85,7 +85,7 @@ const Home = () => {
       ticketInfo = {
         totalVisitors: count,
         selectedRides: [{ name: "Roller Coaster", price: 50 }],
-        totalPrice: 200,
+        totalPrice: 50,
       };
     } else if (count === 2) {
       ticketInfo = {
@@ -140,7 +140,7 @@ const Home = () => {
                   <ListGroup.Item>Only Entry at Fantasy Kingdom</ListGroup.Item>
                   <ListGroup.Item>Entry at Water Kingdom</ListGroup.Item>
                 </ListGroup>
-                <Card.Text>Price : TK :200</Card.Text>
+                <Card.Text>Price : TK :50</Card.Text>
                 <Button variant="outline-info">Buy now</Button>
               </Card.Body>
             </Card>
@@ -159,7 +159,7 @@ const Home = () => {
                   <ListGroup.Item>Only Entry at Fantasy Kingdom</ListGroup.Item>
                   <ListGroup.Item>Entry at Water Kingdom</ListGroup.Item>
                 </ListGroup>
-                <Card.Text>Price : TK :300</Card.Text>
+                <Card.Text>Price : TK :160</Card.Text>
                 <Button variant="outline-info">Buy now</Button>
               </Card.Body>
             </Card>
@@ -178,7 +178,7 @@ const Home = () => {
                   <ListGroup.Item>Only Entry at Fantasy Kingdom</ListGroup.Item>
                   <ListGroup.Item>Entry at Water Kingdom</ListGroup.Item>
                 </ListGroup>
-                <Card.Text>Price : TK :400</Card.Text>
+                <Card.Text>Price : TK :300</Card.Text>
                 <Button variant="outline-info">Buy now</Button>
               </Card.Body>
             </Card>
